@@ -1,12 +1,21 @@
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
-       auto it = std::unique(nums.begin(), nums.end());
+        if (nums.size() == 0) return 0;
         
-        // Optional: Erase the trailing duplicate elements
-        nums.erase(it, nums.end()); 
+        int left = 0; 
         
-        return nums.size();
+        for (int right = 1; right < nums.size(); right++) { 
+            if(nums[right]!=nums[left]){
+                left++;
+                nums[left]=nums[right];
+                
+
+            }
+            
+        }
         
+        
+        return left + 1; 
     }
 };
